@@ -15,8 +15,8 @@ WHERE
 	Date BETWEEN ‘2020-12-01’ AND ‘2020-12-20’
 
 # CAST
-SELECT
-     CAST(purchase_price AS FLOAT64) <br/>
+SELECT <br/>
+CAST(purchase_price AS FLOAT64) <br/>
 FROM customer.data_purchase <br/>
 ORDER BY purchase_price DESC
 
