@@ -2,8 +2,8 @@
 Here is where I will keep logs of what I am learning!
 
 # AVERAGE TEMPERATURE
-SELECT AVG(temperature) 
-FROM `skillful-coast-340323.demos.weather_nyc` 
+SELECT AVG(temperature) <br/>
+FROM `skillful-coast-340323.demos.weather_nyc` <br/>
 WHERE date BETWEEN '2020-06-01' AND '2020-06-30'
  
 
