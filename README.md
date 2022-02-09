@@ -56,7 +56,9 @@ FROM big-query-public-data.ny <br/>
 GROUP BY start_station_name, end_station_name, usertype <br/>
 ORDER BY num_trips DESC <br/>
 LIMIT 10 <br/>
-
+Reminder: Make sure to use a backtick (`) instead of an apostrophe (') in the FROM statement. <br/>
+About: ROUND(AVG(cast(tripduration as int64)/60,2) AS duration <br/>
+Big query stores numbers in a 64-bit memory system, which is why there's a 64 after integer in this case. we'll divide it by the number seconds in a minute (60) and tell it how far we want it to round, two decimal places(2).<br/>
 # COALESCE
 SELECT <br/>
 	COALESCE(product, product_code) AS product_info <br/>
