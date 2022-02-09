@@ -20,8 +20,8 @@ CAST(purchase_price AS FLOAT64) <br/>
 FROM customer.data_purchase <br/>
 ORDER BY purchase_price DESC
 
-# SELECT
-    CAST(date AS date) AS date_only <br/>
+SELECT
+CAST(date AS date) AS date_only <br/>
 FROM customer_data.purchases  <br/>
 The above statement changes SQL from recognizing the dates as datetime (2020-12-12T0:00:00) to only date (2020-12-12)
 
