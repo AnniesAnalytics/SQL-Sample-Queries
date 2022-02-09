@@ -45,7 +45,16 @@ SELECT <br/>
 	CONCAT(product_code, product_color) AS new_product_code <br/>
 FROM customer_purchase.data <br/>
 WHERE <br/>
-	Product = ‘couch’ <br/>
+	Product = ‘couch’ <br/> <br/> <br/>
+	
+SELECT usertype <br/>
+	CONCAT(start_station_name, “ to “, end_station_name) AS route, <br/>
+	COUNT (*) as num_trips, <br/>
+ROUND(AVG(cast(tripduration as int64)/60,2) AS duration <br/>
+FROM big-query-public-data.ny <br/>
+GROUP BY start_station_name, end_station_name, usertype <br/>
+ORDER BY num_trips DESC <br/>
+LIMIT 10 <br/>
 
 # COALESCE
 SELECT <br/>
