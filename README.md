@@ -25,7 +25,8 @@ CAST(date AS date) AS date_only <br/>
 FROM customer_data.purchases  <br/>
 The above statement changes SQL from recognizing the dates as datetime (2020-12-12T0:00:00) to only date (2020-12-12)
 
-# CAST(expression AS typename)    Where expression is the data to be converted and typename is the data type to be returned.
+# CAST 
+<br/>(expression AS typename)    Where expression is the data to be converted and typename is the data type to be returned.
 
 ## Converting a number to a string: 
 SELECT CAST(MyCount AS String) FROM MyTable <br/>
