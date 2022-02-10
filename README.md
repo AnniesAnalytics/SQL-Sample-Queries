@@ -145,8 +145,18 @@ FROM  <br/>
   &emsp;    `bigquery-public-data.world_bank_intl_education.international_education` <br/> 
 INNER JOIN  <br/> 
    &emsp;   `bigquery-public-data.world_bank_intl_education.country_summary`  <br/> 
-ON `bigquery-public-data.world_bank_intl_education.country_summary`.country_code = `bigquery-public-data.world_bank_intl_education.international_education`.country_code <br/> 
+ON `bigquery-public-data.world_bank_intl_education.country_summary`.country_code = `bigquery-public-data.world_bank_intl_education.international_education`.country_code <br/><br/> 
+To use the SAME query but with alias' to clean it up: <br/><br/>
 
+SELECT <br/>
+  &emsp;   edu.country_name, <br/>
+   &emsp;  summary.country_code, <br/>
+    &emsp; edu.value <br/>
+FROM  <br/>
+   &emsp;  `bigquery-public-data.world_bank_intl_education.international_education` AS edu <br/>
+INNER JOIN  <br/>
+   &emsp;  `bigquery-public-data.world_bank_intl_education.country_summary` AS summary  <br/>
+ON edu.country_code = summary.country_code  <br/>
 
 # LENGTH
 SELECT length (title) AS letters_in_title, album_id <br/>
