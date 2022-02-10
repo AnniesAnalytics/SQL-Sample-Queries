@@ -4,8 +4,15 @@ Here is where I will keep logs of what I am learning!
 # AVERAGE TEMPERATURE
 SELECT AVG(temperature) <br/>
 FROM `skillful-coast-340323.demos.weather_nyc` <br/>
-WHERE date BETWEEN '2020-06-01' AND '2020-06-30'
+WHERE date BETWEEN '2020-06-01' AND '2020-06-30' <br/><br/>
  
+# ALIAS 
+Basic format for an AS query: <br/>
+SELECT column_name(s) <br/>
+FROM table_name AS alias_name; <br/><br/>
+&emsp; Notice that AS is preceded by the table name and followed by the new nickname. It is a similar approach to aliasing a column:<br/>
+SELECT column_name AS alias_name <br/>
+FROM table_name;
 
 # BETWEEN
 SELECT
