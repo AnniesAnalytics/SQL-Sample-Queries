@@ -96,6 +96,18 @@ FROM playlist <br/>
 ORDER BY playlist_id <br/>
 
 # JOIN
+General join syntax: <br/>
+SELECT <br/>
+--table columns are inserted here <br/>
+Table_name1.column_name <br/>
+Table_name2.column_name <br/>
+FROM <br/>
+&emsp;	Table_name1 <br/>
+JOIN <br/>
+&emsp;	Table_name2 <br/>
+ON table_name1.column_name=table_name2.column_name <br/> <br/>
+
+
 SELECT <br/>
 &emsp; employees.name AS employee_name, <br/>
     &emsp; employees.role AS employee_role, <br/>
