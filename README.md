@@ -78,6 +78,13 @@ SELECT <br/>
 FROM customer_data.purchase <br/>
 Return non-null values in a list <br/>
 
+# COUNT / COUNT DISTINCT
+COUNT returns the number of rows in a specified range. COUNT DISTINCT does the same, but it will not count repeating values. Use it after the SELECT line. <br/>
+SELECT <br/>
+&nbsp;	COUNT(warehouse.state) AS num_states <br/>
+Warehouse.state is the column and num_states is the new column you are creating to return the count. <br/>
+
+
 # CASE
 The CASE statement goes through one or more conditions and returns a value as soon as a condition is met <br/>
 SELECT <br/>
