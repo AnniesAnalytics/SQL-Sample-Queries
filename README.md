@@ -156,7 +156,26 @@ FROM  <br/>
    &emsp;  `bigquery-public-data.world_bank_intl_education.international_education` AS edu <br/>
 INNER JOIN  <br/>
    &emsp;  `bigquery-public-data.world_bank_intl_education.country_summary` AS summary  <br/>
-ON edu.country_code = summary.country_code  <br/>
+ON edu.country_code = summary.country_code  <br/> <br/>
+
+SELECT <br/>
+&emsp; seasons.market AS university, <br/>
+&emsp; seasons.name AS team_name, <br/>
+&emsp; seasons.wins, <br/>
+&emsp; seasons.losses, <br/>
+&emsp; seasons.ties, <br/>
+&emsp; mascots.mascot AS team_mascot <br/>
+FROM <br/>
+&emsp; `bigquery-public-data.ncaa_basketball.mbb_historical_teams_seasons` AS seasons <br/>
+LEFT JOIN <br/>
+&emsp; `bigquery-public-data.ncaa_basketball.mascots` AS mascots <br/>
+ON <br/>
+&emsp; seasons.team_id = mascots.id <br/>
+ WHERE  <br/>
+&emsp; seasons.season = 1984 <br/>
+ AND seasons.division = 1 <br/>
+ ORDER BY  <br/>
+&emsp; seasons.market <br/>
 
 # LENGTH
 SELECT length (title) AS letters_in_title, album_id <br/>
