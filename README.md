@@ -105,8 +105,8 @@ FROM <br/>
 &emsp;	Table_name1 <br/>
 JOIN <br/>
 &emsp;	Table_name2 <br/>
-ON table_name1.column_name=table_name2.column_name <br/> <br/>
-
+ON table_name1.column_name=table_name2.column_name <br/> 
+(the column name is the key, be it primary key or foreign key that they share in common) <br/> <br/> 
 SELECT <br/>
 &emsp;	Customers.customer_name, <br/>
 &emsp;	Orders.product_id, <br/> 
