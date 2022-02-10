@@ -134,7 +134,19 @@ SELECT <br/>
 FROM employee_data.employees <br/>
 FULL OUTER JOIN  <br/>
    &emsp; employee_data.departments ON  <br/>
-   &emsp; employees.department_id = departments.department_id <br/> 
+   &emsp; employees.department_id = departments.department_id <br/> <br/> 
+   
+  SELECT <br/> 
+  &emsp;`bigquery-public-data.world_bank_intl_education.international_education`.country_name, <br/>  
+    &emsp;  `bigquery-public-data.world_bank_intl_education.country_summary`.country_code,  <br/> 
+   &emsp;   `bigquery-public-data.world_bank_intl_education.international_education`.value, <br/> 
+   &emsp;   `bigquery-public-data.world_bank_intl_education.country_summary`.short_name, <br/> 
+FROM  <br/> 
+  &emsp;    `bigquery-public-data.world_bank_intl_education.international_education` <br/> 
+INNER JOIN  <br/> 
+   &emsp;   `bigquery-public-data.world_bank_intl_education.country_summary`  <br/> 
+ON `bigquery-public-data.world_bank_intl_education.country_summary`.country_code = `bigquery-public-data.world_bank_intl_education.international_education`.country_code <br/> 
+
 
 # LENGTH
 SELECT length (title) AS letters_in_title, album_id <br/>
