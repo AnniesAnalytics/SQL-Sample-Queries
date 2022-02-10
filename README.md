@@ -10,9 +10,15 @@ WHERE date BETWEEN '2020-06-01' AND '2020-06-30' <br/><br/>
 Basic format for an AS query: <br/>
 SELECT column_name(s) <br/>
 FROM table_name AS alias_name; <br/><br/>
-&emsp; Notice that AS is preceded by the table name and followed by the new nickname. It is a similar approach to aliasing a column:<br/>
+&emsp; Notice that AS is preceded by the table name and followed by the new nickname. It is a similar approach to aliasing a column:<br/><br/>
 SELECT column_name AS alias_name <br/>
-FROM table_name;
+FROM table_name; <br/><br/>
+
+If using AS results in an error when running a query because the SQL database you are working with doesn't support it, you can leave it out. In the previous examples, the alternate syntax for aliasing a table or column would be: <br/>
+
+FROM table_name alias_name <br/>
+
+SELECT column_name alias_name <br/>
 
 # BETWEEN
 SELECT
