@@ -109,7 +109,7 @@ ON table_name1.column_name=table_name2.column_name <br/> <br/>
 
 SELECT <br/>
 &emsp;	Customers.customer_name, <br/>
-&emsp;	Orders.product_id, <br/> <br/>
+&emsp;	Orders.product_id, <br/> 
 &emsp;	Orders.ship_date <br/>
 FROM <br/>
 &emsp;	Customers <br/>
