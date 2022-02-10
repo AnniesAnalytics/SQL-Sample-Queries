@@ -91,6 +91,15 @@ FROM employee_data.employees <br/>
 INNER JOIN  <br/>
    &emsp; employee_data.departments ON  <br/>
    &emsp; employees.department_id = departments.department_id <br/>
+   
+SELECT <br/>
+&emsp; employees.name AS employee_name, <br/>
+    &emsp; employees.role AS employee_role, <br/>
+    &emsp; departments.name AS department_name <br/>
+FROM employee_data.employees <br/>
+FULL OUTER JOIN  <br/>
+   &emsp; employee_data.departments ON  <br/>
+   &emsp; employees.department_id = departments.department_id <br/> 
 
 # LENGTH
 SELECT length (title) AS letters_in_title, album_id <br/>
