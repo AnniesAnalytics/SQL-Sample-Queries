@@ -20,12 +20,43 @@ FROM table_name alias_name <br/>
 
 SELECT column_name alias_name <br/>
 
+# Arithmetic
+SQL can perform arithmetic for you. Just select what you want to +, -, *, / . Don’t use spaces <br/>
+SELECT <br/>
+station_name,<br/>
+ridership_2013,<br/>
+ridership_2014,<br/>
+ridership_2014-ridership_2013 AS change_2014_raw <br/>
+FROM `bigquery-public-data.new_york_subway.subway_ridership_2013_present` <br/><br/>
+ 
+SELECT <br/>
+station_name,<br/>
+ridership_2013,<br/>
+ridership_2014,<br/>
+ridership_2015,<br/>
+ridership_2016,<br/>
+(ridership_2013+ridership_2014+ridership_2015+ridership_2016) / 4 AS average <br/>
+FROM `bigquery-public-data.new_york_subway.subway_ridership_2013_present` <br/> <br/><br/>
+
+
+You can also calculate percentages within your data: <br/>
+SELECT <br/>
+&emsp;	Region <br/>
+Small_bags <br/>
+ &emsp;	Total_bags <br/>
+(small_bags / total_bags)*100 AS small_bags_percent <br/>
+FROM avocado_data.avocado_prices <br/>
+WHERE total_bags <> 0 <br/><br/> <br/>
+
+You can also use != 0 in place of <>0 or use the SAFE_DIVIDE function <br/>
+
+
 # BETWEEN
 SELECT
-	Date, purchase_price
+	&emsp; Date, purchase_price
 FROM customer_data.purchases
 WHERE
-	Date BETWEEN ‘2020-12-01’ AND ‘2020-12-20’
+	 &emsp; Date BETWEEN ‘2020-12-01’ AND ‘2020-12-20’
 
 # CAST
 SELECT <br/>
@@ -101,6 +132,31 @@ FROM cars.car_info; <br/>
 SELECT DISTINCT name <br/>
 FROM playlist <br/>
 ORDER BY playlist_id <br/>
+
+# EXTRACT
+This is for if you want to use data from only one part of a column of cells- such as the date from a date format that includes more than the year. This seems like it is useful for if you arent planning on cleaning or manipulating your data before using it.<br/>
+SELECT <br/>
+&emsp;	EXTRACT (YEAR FROM STARTTIME) AS year,<br/>
+&emsp;	COUNT (*) AS number_of_rides <br/>
+FROM <br/>
+&emsp;	Address.address <br/>
+GROUP BY Year <br/>
+ORDER BY year <br/>
+
+SELECT<br/>
+&emsp;    ProductId, <br/>
+&emsp;    SUM (Quantity) AS unitssold,<br/>
+&emsp;    ROUND (MAX (UnitPrice), 2) AS UnitPrice,<br/>
+&emsp;    EXTRACT (YEAR FROM DATE) AS year,<br/>
+&emsp;    EXTRACT (MONTH FROM DATE) AS month<br/>
+FROM `skillful-coast-340323.sales.sales` <br/>
+GROUP BY <br/>
+ &emsp;   year, month, ProductId <br/>
+ORDER BY  <br/>
+&emsp;    year, month, ProductId <br/>
+LIMIT 1000 <br/>
+The ROUND (MAX (..), #) seems to need to be run because you cannot run UnitPrice on its own “SELECT list expression references column UnitPrice which is neither grouped nor aggregated at [4:5]”. Trying to run quantity on its own as a column got “SELECT list expression references column Quantity which is neither grouped nor aggregated at [3:5]”
+
 
 # JOIN
 General join syntax: <br/>
