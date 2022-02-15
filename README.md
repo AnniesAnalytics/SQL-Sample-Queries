@@ -253,6 +253,8 @@ SELECT <br/>
     MAX(length) AS max_length <br/>
 FROM cars.car_info; <br/>
 
+# Modulo
+An operator (%) that returns the remainder when one number is divided by another.
 
 
 # Order By
@@ -328,6 +330,47 @@ Because the genre is a string, you need to put the ‘ ‘ around the string nam
 SELECT CustomerId <br/>
 FROM invoices <br/>
 WHERE BillingCountry = 'Germany' AND Total > 5
+
+# WITH
+With allows you to create temporary tables and query from them right within your query. You can also use SELECT INTO and CREATE TEMP TABLE	<br/>
+WITH trips_over_one_hour AS ( <br/>
+SELECT * <br/>
+FROM `bigquery-public-data.new_york_citibike.citibike_trips` <br/>
+WHERE tripduration >= 60<br/>
+)<br/>
+SELECT COUNT (*) AS cnt <br/>
+FROM trips_over_one_hour <br/><br/>
+ 
+In order to get this one to work (as I was writing myself) I had to take the ‘ ‘ from around FROM name,and make sure I had my commas in the right place. It took me a long time.<br/>
+WITH <br/>
+&emsp;    longest_used_bike AS ( <br/>
+      &emsp;&emsp;  SELECT <br/>
+       &emsp;&emsp;&emsp;     bikeid,<br/>
+     &emsp;&emsp;&emsp;       SUM(duration_minutes) AS trip_duration<br/>
+    &emsp;&emsp;    FROM <br/>
+    &emsp;&emsp;&emsp;        bigquery-public-data.austin_bikeshare.bikeshare_trips<br/>
+   &emsp;&emsp;     GROUP BY <br/>
+    &emsp;&emsp;&emsp;        bikeid<br/>
+   &emsp;&emsp;     ORDER BY <br/>
+    &emsp;&emsp;&emsp;        trip_duration DESC<br/>
+  &emsp;&emsp;      LIMIT 1<br/>
+ &emsp;   )<br/>
+ 
+##_find station at which longest bike leaves most often
+SELECT <br/>
+ &emsp;   trips.start_station_id, <br/>
+&emsp;    COUNT(*) AS trip_ct<br/>
+FROM <br/>
+  &emsp;  longest_used_bike AS longest<br/>
+INNER JOIN <br/>
+  &emsp;  bigquery-public-data.austin_bikeshare.bikeshare_trips AS trips<br/>
+ON longest.bikeid = trips.bikeid<br/>
+GROUP BY <br/>
+  &emsp;  trips.start_station_id<br/>
+ORDER BY<br/>
+   &emsp; trip_ct DESC<br/>
+&emsp;    LIMIT 1<br/>
+
 
 
 
